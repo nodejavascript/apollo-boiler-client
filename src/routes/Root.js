@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { gql, useLazyQuery } from '@apollo/client'
 
-import { Card, Button, Space, Typography } from 'antd'
+import { Card, Button, Space, Typography, Row, Col } from 'antd'
 
 const { Text } = Typography
 
@@ -15,14 +15,26 @@ const LOAD_POSTS = gql`
   }
 `
 
-const PostCard = ({ post }) => {
-  const { title, body } = post
+const PostsLayout = ({ posts }) => {
+  if (!posts) return null
+
   return (
-    <Card
-      title={title}
+    <Row
+      gutter={[16, 16]}
     >
-      <p>{body}</p>
-    </Card>
+      {
+        posts?.map(post => {
+          const { id } = post
+          const key = `post_${id}`
+          return (
+            <Col key={key} span={12}>
+              <PostCard post={post} />
+            </Col>
+          )
+        })
+      }
+
+    </Row>
   )
 }
 
@@ -30,6 +42,10 @@ const Root = () => {
   const [loadPosts, { data, loading, error }] = useLazyQuery(LOAD_POSTS)
 
   const [posts, setPosts] = useState()
+
+  useEffect(() => {
+    if (data?.posts) return setPosts(data.posts)
+  }, [data, setPosts])
 
   if (error) {
     return (
@@ -48,22 +64,27 @@ const Root = () => {
       title={
         <Space>
           <Text>My Blog</Text>
-          <Button type='primary'>Load Posts</Button>
+          <Button type='primary' onClick={() => loadPosts()}>Load Posts</Button>
         </Space>
       }
       style={{ width: '100%' }}
     >
       {!posts && <Text>Please load posts</Text>}
 
-      {
-        posts?.map(post => {
-          const { id } = post
-          const key = `post_${id}`
-          return <PostCard key={key} post={post} />
-        })
-      }
+      <PostsLayout posts={posts} />
     </Card>
   )
 }
 
 export default Root
+
+const PostCard = ({ post }) => {
+  const { title, body } = post
+  return (
+    <Card
+      title={title}
+    >
+      <p>{body}</p>
+    </Card>
+  )
+}
