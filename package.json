@@ -1,0 +1,75 @@
+{
+  "name": "apollo-boiler-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "standard  --verbose",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodejavascript/apollo-boiler-client.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ant-design/colors": "^6.0.0",
+    "@apollo/client": "^3.6.9",
+    "@graphql-tools/schema": "^8.5.0",
+    "@scaleway/use-query-params": "^3.1.5",
+    "antd": "^4.21.6",
+    "apollo-link": "^1.2.14",
+    "apollo-link-ws": "^1.0.20",
+    "apollo-server-core": "^3.10.0",
+    "apollo-utilities": "^1.3.4",
+    "convert-to-object": "0.0.4",
+    "gapi-script": "^1.2.0",
+    "graphql": "^16.5.0",
+    "graphql-ws": "^5.9.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-google-charts": "^4.0.0",
+    "react-google-login": "^5.2.2",
+    "react-iframe": "^1.8.0",
+    "react-json-view": "^1.21.3",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.0",
+    "subscriptions-transport-ws": "^0.9.18",
+    "web-vitals": "^2.1.4",
+    "ws": "^8.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-config-standard-jsx": "^10.0.0",
+    "source-map-loader": "^3.0.1",
+    "standard": "^16.0.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "standard": {
+    "ignore": [],
+    "globals": [
+      "Image"
+    ]
+  }
+}
